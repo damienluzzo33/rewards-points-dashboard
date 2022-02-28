@@ -9,12 +9,16 @@ export default function Data(props) {
     console.log(typeof getMonth)
 
     return (
-        <div>
-            <div>
-                <h2>... Rewards For ...</h2>
+        <div className="display-box">
+            <div className="display-title-box">
+                {querySelection.period === "Total" ? (
+                    <h2>Total Rewards Points</h2>
+                ) : (
+                    <h2>{getMonth(querySelection.period)} Rewards Points</h2>
+                )}
             </div>
-            <div>
-                <h2>Points</h2>
+            <div className="counter-box">
+                <h2>{pointCount}</h2>
             </div>
         </div>
     )

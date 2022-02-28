@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+
 import Form from "./Form";
 import Data from "./Data";
+
 import dataset from "../data/dataset.json";
 import { fetchData } from "../utils/API";
 import { convertToPoints, getMonth, dateConverter } from "../utils/converters";
@@ -86,21 +88,25 @@ export default function Dashboard() {
 
     return (
         <main>
-            <section>
-                <h2>Data</h2>
-                <Data 
-                    pointCount={pointCount}
-                    querySelection={querySelection}
-                    getMonth={getMonth}
-                />
+            <section id="points-display" aria-describedby="points display">
+                {pointCount === null ? (
+                    <React.Fragment />
+                ) : (
+                    <Data 
+                        pointCount={pointCount}
+                        querySelection={querySelection}
+                        getMonth={getMonth}
+                    />
+                )}
+                
             </section>
-            <section>
+            <section id="customer-form" aria-describedby="customer form">
                 <Form 
                     handleChange={handleChange}
                     handleSubmit={handleSubmit}
                     customerNames={customerNames}
                 />
-                <div>
+                <div className="error-msg">
                     {errorMsg !== "" ? <p>{errorMsg}</p> : <React.Fragment />}
                 </div>
             </section>

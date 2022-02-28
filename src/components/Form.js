@@ -7,26 +7,38 @@ export default function Form(props) {
     console.log(typeof handleChange);
     console.log(typeof handleSubmit);
     console.log(customerNames);
-    
 
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
             <div>
-                <label>Customer</label>
-                <select>
-                    <option>customer_1</option>
-                    <option>customer_2</option>
+                <label htmlFor="customer">Customer:</label>
+                <select onChange={handleChange} name="customer" id="customer">
+                    <option value="">--Select Option--</option>
+                    {customerNames.map((customer) => (
+                        <option key={customer} value={customer}>{customer}</option>
+                    ))}
                 </select>
             </div>
             <div>
-                <label>Time Period</label>
-                <select>
-                    <option>period_1</option>
-                    <option>period_2</option>
-                    <option>period_3</option>
+                <label htmlFor="period">Points Period:</label>
+                <select onChange={handleChange} name="period" id="period">
+                    <option value="">--Select Period--</option>
+                    <option value="Total">Total</option>
+                    <option value="1">January</option>
+                    <option value="2">February</option>
+                    <option value="3">March</option>
+                    <option value="4">April</option>
+                    <option value="5">May</option>
+                    <option value="6">June</option>
+                    <option value="7">July</option>
+                    <option value="8">August</option>
+                    <option value="9">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>
                 </select>
             </div>
-            <button type="submit" >Search</button>
+            <button id="submit-btn" type="submit">Get Rewards</button>
         </form>
     )
 }
