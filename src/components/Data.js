@@ -11,10 +11,11 @@ export default function Data(props) {
     return (
         <div className="display-box">
             <div className="display-title-box">
+                <h2 className="customer-name">{querySelection.customer}</h2>
                 {querySelection.period === "Total" ? (
-                    <h2>Total Rewards Points</h2>
+                    <h2>Total Points</h2>
                 ) : (
-                    <h2>{getMonth(querySelection.period)} Rewards Points</h2>
+                    <h2>{getMonth(querySelection.period)} 2022</h2>
                 )}
             </div>
             <div className="counter-box">

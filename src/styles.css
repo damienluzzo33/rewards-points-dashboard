@@ -95,6 +95,40 @@ select option:hover {
     cursor: pointer;
 }
 
+.display-box {
+    margin: 35px;
+    border: 1px solid #707070;
+    background-color: white;
+    padding: 40px 20px;
+}
+
+.counter-box {
+    border: 1px solid #707070;
+    background-color: white;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.counter-box h2 {
+    font-size: 100px;
+}
+
+.display-title-box {
+    margin-bottom: 35px;
+}
+
+.display-title-box h2 {
+    font-size: 30px;
+    font-weight: 400;
+    margin: 10px 0px;
+}
+
+.display-title-box .customer-name {
+    font-weight: 700;
+}
 
 @media screen and (min-width: 667px) {
     header {
