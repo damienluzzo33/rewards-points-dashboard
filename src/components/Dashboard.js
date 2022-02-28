@@ -87,8 +87,8 @@ export default function Dashboard() {
 
 
     return (
-        <main>
-            <section id="points-display" aria-describedby="points display">
+        <main aria-describedby="dashboard">
+            <section id="points-display" aria-describedby="rewards points display">
                 {pointCount === null ? (
                     <React.Fragment />
                 ) : (
@@ -100,7 +100,7 @@ export default function Dashboard() {
                 )}
                 
             </section>
-            <section id="customer-form" aria-describedby="customer form">
+            <section id="customer-form" aria-describedby="customer rewards data search form">
                 <Form 
                     handleChange={handleChange}
                     handleSubmit={handleSubmit}

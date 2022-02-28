@@ -9,20 +9,21 @@ export default function Form(props) {
     console.log(customerNames);
 
     return (
-        <form onSubmit={handleSubmit}>
-            <div>
-                <label htmlFor="customer">Customer:</label>
+        <form id="admin-form" onSubmit={handleSubmit}>
+            <div className="input-container">
+            <div className="entry-box">
+                <label htmlFor="customer">Select a customer</label>
                 <select onChange={handleChange} name="customer" id="customer">
-                    <option value="">--Select Option--</option>
+                    <option value="">Customer</option>
                     {customerNames.map((customer) => (
                         <option key={customer} value={customer}>{customer}</option>
                     ))}
                 </select>
             </div>
-            <div>
-                <label htmlFor="period">Points Period:</label>
+            <div className="entry-box">
+                <label htmlFor="period">Select a time period</label>
                 <select onChange={handleChange} name="period" id="period">
-                    <option value="">--Select Period--</option>
+                    <option value="">Time Period</option>
                     <option value="Total">Total</option>
                     <option value="1">January</option>
                     <option value="2">February</option>
@@ -38,7 +39,10 @@ export default function Form(props) {
                     <option value="12">December</option>
                 </select>
             </div>
-            <button id="submit-btn" type="submit">Get Rewards</button>
+            </div>
+            <button id="submit-btn" type="submit">
+                <img src="../../assets/search_icon.svg" alt="search button icon" />
+            </button>
         </form>
     )
 }

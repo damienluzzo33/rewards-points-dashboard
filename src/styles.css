@@ -1,1 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@100;200;300;400;500;600;700&family=League+Spartan:wght@100;200;300;400;500;600;700;800&display=swap');
 
+
+body {
+    background-color: #F9F1EF;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #FFFCFB;
+    height: 200px;
+    border-bottom: 1px solid #707070;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-family: 'League Spartan', sans-serif;
+    text-transform: uppercase;
+    font-size: 31px;
+    line-height: 40px;
+    font-weight: 800;
+    text-align: center;
+    margin-right: 20px;
+}
+
+header img {
+    width: 120px;
+    max-width: 150px; 
+    margin: 40px 10px 40px 20px;
+}
+
+#admin-form {
+    padding: 35px;
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.entry-box {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+label {
+    font-family: 'IBM Plex Sans Condensed', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    padding-bottom: 5px;
+}
+
+select {
+
+    margin-bottom: 10px;
+    font-family: 'IBM Plex Sans Condensed', sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 5px;
+    font-size: 18px;
+    border: 2px solid black;
+}
+
+option {
+    font-weight: 700;
+}
+
+select option:hover {
+    background-color: #FFFFFF !important;
+}
+
+
+#customer {
+    background-color: #7ACED9;
+}
+
+#period {
+    background-color: #022628;
+    color: white;
+}
+
+.input-container {
+    width: 100%;
+}
+
+#submit-btn {
+    margin-left: 35px;
+    background-color: transparent;
+    border: none;
+}
+
+#submit-btn img {
+    width: 60px;
+    cursor: pointer;
+}
+
+
+@media screen and (min-width: 667px) {
+    header {
+        justify-content: left;
+    }
+    header img {
+        display: none;
+    }
+    header h1 {
+        font-size: 4.9vw;
+        margin-left: 40px;
+        margin-top: 50px;
+    }
+
+}
