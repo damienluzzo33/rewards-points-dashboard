@@ -1,12 +1,16 @@
 import './styles.css';
 import Navbar from './components/Navbar';
 import Dashboard from './components/Dashboard';
+import Sidebar from './components/Sidebar';
 
 function App() {
     return (
         <div className="App">
             <Navbar />
-            <Dashboard />
+            <div className='app-content'>
+                <Sidebar />
+                <Dashboard />
+            </div>
         </div>
     );
 }

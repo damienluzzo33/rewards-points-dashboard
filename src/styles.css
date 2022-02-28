@@ -10,9 +10,8 @@ header {
     align-items: center;
     justify-content: space-between;
     background-color: #FFFCFB;
-    height: 200px;
+    height: 160px;
     border-bottom: 1px solid #707070;
-    margin-bottom: 30px;
 }
 
 header h1 {
@@ -36,6 +35,7 @@ header img {
     display: flex;
     justify-content: space-evenly;
     width: 100%;
+    max-width: 600px !important;
 }
 
 .entry-box {
@@ -52,7 +52,6 @@ label {
 }
 
 select {
-
     margin-bottom: 10px;
     font-family: 'IBM Plex Sans Condensed', sans-serif;
     text-transform: uppercase;
@@ -98,14 +97,15 @@ select option:hover {
 .display-box {
     margin: 35px;
     border: 1px solid #707070;
-    background-color: white;
-    padding: 40px 20px;
+    background-color: #022628;
+    padding: 40px 30px;
 }
 
 .counter-box {
     border: 1px solid #707070;
     background-color: white;
     padding: 30px;
+    margin: 0px 20px 0px 20px;
     display: flex;
     justify-content: center;
     text-align: center;
@@ -114,10 +114,12 @@ select option:hover {
 
 .counter-box h2 {
     font-size: 100px;
+    color: #022628;
 }
 
 .display-title-box {
     margin-bottom: 35px;
+    color: white;
 }
 
 .display-title-box h2 {
@@ -128,6 +130,29 @@ select option:hover {
 
 .display-title-box .customer-name {
     font-weight: 700;
+}
+
+.app-content {
+    display: flex;
+    height: calc(100vh - 200px);
+}
+
+main {
+    width: 100%;
+}
+
+#customer-form {
+    display: flex;
+    justify-content: center;
+}
+
+#sidebar {
+    display: none;
+    height: 100%;
+}
+
+#sidebar img {
+    max-width: 160px
 }
 
 @media screen and (min-width: 667px) {
@@ -141,6 +166,20 @@ select option:hover {
         font-size: 4.9vw;
         margin-left: 40px;
         margin-top: 50px;
+    }
+    #sidebar {
+        display: flex;
+        justify-content: center;
+        padding: 35px;
+        width: 35%;
+        background-color: #7ACED9;
+    }
+    #sidebar img {
+        max-width: 100%;
+    }
+    #admin-form {
+        max-width: 75%;
+        float: right;
     }
 
 }
