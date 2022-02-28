@@ -1,9 +1,13 @@
 import React from "react";
-import dataset from "../data/dataset.json";
 
 export default function Form(props) {
 
+    const { handleChange, handleSubmit, customerNames } = props;
 
+    console.log(typeof handleChange);
+    console.log(typeof handleSubmit);
+    console.log(customerNames);
+    
 
     return (
         <form>
