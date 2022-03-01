@@ -26,6 +26,7 @@ export default function ChartData({ chartData }) {
 
     return (
         <div>
+            {chartData.datasets[0].data &&
             <Line 
                 data={chartData} 
                 height={300}
@@ -41,6 +42,8 @@ export default function ChartData({ chartData }) {
                     }
                 }} 
             />
+            }
+            
         </div>
         
     )

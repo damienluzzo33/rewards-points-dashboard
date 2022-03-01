@@ -11,6 +11,7 @@ export default function Form(props) {
                 <label htmlFor="customer">Select a customer</label>
                 <select onChange={handleChange} name="customer" id="customer">
                     <option value="">Customer</option>
+                    <option value="All Customers">All Customers</option>
                     {customerNames.map((customer) => (
                         <option key={customer} value={customer}>{customer}</option>
                     ))}

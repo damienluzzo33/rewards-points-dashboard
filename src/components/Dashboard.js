@@ -13,8 +13,8 @@ export default function Dashboard() {
     const customerNames = Object.keys(dataset);
 
     //* set up point count state
-    const [ pointCount, setPointCount ] = useState(null);
-    const [ monthlyArr, setMonthlyArr ] = useState([0,0,0]);
+    const [ pointCount, setPointCount ] = useState([]);
+    const [ monthlyArr, setMonthlyArr ] = useState([]);
 
     //* gather customer and time period data from user inputs
     const [ querySelection, setQuerySelection ] = useState(
@@ -29,16 +29,15 @@ export default function Dashboard() {
 
     //* update query selection when option inputs change
     const handleChange = (event) => {
-        // console.log(event.target);
 
         //* once admin submits requests, if they choose to do another, the current data should disappear for a better user experience
         setQuerySelection({
             customer: "",
             period: ""
         });
-        setPointCount(null);
+        setPointCount([]);
         setErrorMsg("");
-        setMonthlyArr([0,0,0]);
+        setMonthlyArr([]);
 
         const { value, name } = event.target;
 
@@ -51,7 +50,6 @@ export default function Dashboard() {
     //* first check if any fields are missing, if so set up error message and return out of function completely (will need to set up display of message under form to alert user)
     const handleSubmit = async (event) => {
         event.preventDefault();
-        // console.log(querySelection);
         if (querySelection.customer === "") {
             setErrorMsg("You forgot to select a customer");
             return;
@@ -64,32 +62,60 @@ export default function Dashboard() {
         //* initiate simulated API/database call
         const customerData = await fetchData(dataset);
 
-        //* get chosen customer object from fetched json data
-        const selectedCustomer = customerData[querySelection.customer];
+        if (querySelection.customer === "All Customers") {
+            for (let i = 0; i < customerNames.length; i++) {
+                let selectedCustomer = customerData[customerNames[i]];
+                let targetMonth = querySelection.period;
+                let monthlyDataArr = [0,0,0];
+                let newCount = 0;
 
-        //* store targeted time range in easier to use variable in initiate new point counter
-        let targetMonth = querySelection.period;
-        let monthlyDataArr = [0,0,0];
-        let newCount = 0;
+                //* loop over all transactions from chosen customer and aggregate total according to specified target month (or total)
+                for (let i = 0; i < selectedCustomer.transactions.length; i++) {
+                    let transaction = selectedCustomer.transactions[i];
+                    //* only try to add if target month is Total of if it matches the month of the transaction date
+                    let newPointsStr = parseInt(transaction.total);
+                    let newPoints = convertToPoints(newPointsStr);
 
-        //* loop over all transactions from chosen customer and aggregate total according to specified target month (or total)
-        for (let i = 0; i < selectedCustomer.transactions.length; i++) {
-            let transaction = selectedCustomer.transactions[i];
-            console.log(transaction);
-            //* only try to add if target month is Total of if it matches the month of the transaction date
-            let newPointsStr = parseInt(transaction.total);
-            let newPoints = convertToPoints(newPointsStr);
+                    if (targetMonth === "Total" || targetMonth === dateConverter(transaction.date)) {
+                        newCount = newCount + newPoints;
+                    }
 
-            if (targetMonth === "Total" || targetMonth === dateConverter(transaction.date)) {
-                newCount = newCount + newPoints;
+                    monthlyDataArr[dateConverter(transaction.date) - 1] += newPoints;
+                }
+
+                setPointCount(pointCount => [...pointCount, newCount]);
+                setMonthlyArr(monthlyArr => [...monthlyArr, monthlyDataArr]);
+
+                //! data type will be an object {customer: total} for pointCount and an array of array of numbers [ [Numbers], [Numbers], ... ] for monthlyArr
             }
+        } else {
+            //* get chosen customer object from fetched json data
+            let selectedCustomer = customerData[querySelection.customer];
 
-            monthlyDataArr[dateConverter(transaction.date) - 1] += newPoints;
+            //* store targeted time range in easier to use variable in initiate new point counter
+            let targetMonth = querySelection.period;
+            let monthlyDataArr = [0,0,0];
+            let newCount = 0;
 
+            //* loop over all transactions from chosen customer and aggregate total according to specified target month (or total)
+            for (let i = 0; i < selectedCustomer.transactions.length; i++) {
+                let transaction = selectedCustomer.transactions[i];
+                //* only try to add if target month is Total of if it matches the month of the transaction date
+                let newPointsStr = parseInt(transaction.total);
+                let newPoints = convertToPoints(newPointsStr);
+
+                if (targetMonth === "Total" || targetMonth === dateConverter(transaction.date)) {
+                    newCount = newCount + newPoints;
+                }
+
+                monthlyDataArr[dateConverter(transaction.date) - 1] += newPoints;
+            }
+            //* update the point count state to newly aggregated count
+            setPointCount(newCount);
+            setMonthlyArr(monthlyDataArr);
+
+            //! data type will be a number for pointCount and an array of numbers for monthlyArr
         }
-        //* update the point count state to newly aggregated count
-        setPointCount(newCount);
-        setMonthlyArr(monthlyDataArr);
     }
 
 
@@ -120,9 +146,9 @@ export default function Dashboard() {
                     <Data 
                         pointCount={pointCount}
                         querySelection={querySelection}
-                        fetchData={fetchData}
                         dataset={dataset}
                         monthlyArr={monthlyArr}
+                        customerNames={customerNames}
                     />
                 )}
                 

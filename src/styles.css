@@ -4,6 +4,8 @@
 body {
     background-color: #EFFCFD;
     font-family: 'IBM Plex Sans Condensed', sans-serif;
+    height: 100%;
+    width: 100vw;
 }
 
 header {
@@ -19,11 +21,12 @@ header {
 header h1 {
     font-family: 'League Spartan', sans-serif;
     text-transform: uppercase;
-    font-size: 32px;
+    font-size: 9vw;
     line-height: 40px;
     font-weight: 800;
     text-align: left;
     margin-right: 20px;
+    margin-left: 15px;
 }
 
 header img {
@@ -33,7 +36,7 @@ header img {
 }
 
 #admin-form {
-    padding: 35px 35px 45px 35px;
+    padding: 35px 25px 45px 25px;
     display: flex;
     justify-content: space-evenly;
     width: 100%;
@@ -81,6 +84,19 @@ select option:hover {
     /* background-color: #7ACED9; */
 }
 
+#root {
+    height: 100%;
+}
+
+.App {
+    height: 100%;
+}
+
+#points-display {
+    width:100%;
+    max-width: 750px;
+}
+
 #period {
     background-color: #022628;
     color: white;
@@ -113,9 +129,7 @@ select option:hover {
 }
 
 .display-box {
-    margin: 0px 0px 35px 0px;
     border: 1px solid #707070;
-    /* background-color: #7ACED9; */
     background-color: white;
     padding: 40px 30px;
 }
@@ -148,7 +162,7 @@ h2 span {
 
 .display-title-box {
     margin-bottom: 35px;
-    /* color: white; */
+    margin-right: 35px;
 }
 
 .display-title-box h2 {
@@ -168,15 +182,45 @@ select option:hover {
     margin-bottom: 40px;
 }
 
+.display-title-box .customer-name-small {
+    font-size: 22px !important;
+    font-weight: 600;
+}
+
+.display-title-box .customer-small-div h2 {
+    font-size: 20px;
+}
+
 .display-title-box .balance {
-    margin-top: 20px;
+    margin-top: 10px;
     font-size: 28px;
+    position: relative;
+}
+
+
+
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.customer-small-div {
+    text-align: center;
+    border: 2px solid #707070;
+    padding: 5px;
+    width: 100%;
+}
+
+.customer-small-div .balance span {
+    margin-top: 20px;
+    font-size: 22px;
     position: relative;
 }
 
 .app-content {
     display: flex;
-    height: calc(100vh - 200px);
+    height: calc(100% - 160px);
 }
 
 main {
@@ -188,6 +232,7 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 100%;
 }
 
 .error-msg {
@@ -212,11 +257,6 @@ main {
     justify-content: space-between;
 }
 
-/* .error-msg p img {
-    width: 20px;
-    margin-right: 2px;
-} */
-
 #sidebar {
     display: none;
     height: 100%;
@@ -238,17 +278,29 @@ main {
     margin: 15px;
 }
 
-@media screen and (min-width: 440px) {
+@media screen and (min-width: 550px) {
     header h1 {
-        font-size: 7vw;
+        font-size: 8vw;
+    }
+
+    .customer-small-div {
+        width: 50%;
     }
 }
+
 
 @media screen and (min-width: 667px) {
 
     .chart-display {
         width: 50%;
-        /* padding-left: 50px; */
+    }
+
+    .wrapper {
+        width: 35%;
+    }
+    
+    .customer-small-div {
+        width: 100%;
     }
 
     .display-box {
@@ -260,26 +312,55 @@ main {
         justify-content: left;
         padding-bottom: 25px;
     }
-    header img {
-        display: none;
-    }
-    header h1 {
-        /* font-size: 4.9vw; */
-        margin-left: 40px;
-        margin-top: 50px;
-    }
-    #sidebar {
-        display: flex;
-        justify-content: center;
-        padding: 35px;
-        width: 35%;
-    }
-    #sidebar img {
-        max-width: 100%;
-    }
     #admin-form {
         max-width: 75%;
         float: right;
     }
 
+}
+
+@media screen and (min-width: 765px) {
+    main {
+        padding: 0px 40px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    #admin-form {
+        padding: 35px 0px 45px 0px;
+        display: flex;
+        justify-content: left;
+        width: 100%;
+
+    }
+    #sidebar {
+        display: flex;
+        justify-content: center;
+        padding: 35px;
+        width: 25%;
+        /* max-width: 300px;
+        min-width: 200px; */
+    }
+    #sidebar img {
+        max-width: 100%;
+    }
+    header img {
+        display: none;
+    }
+    header h1 {
+        margin-left: 40px;
+        margin-top: 50px;
+        font-size: 60px;
+    }
+    #customer-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+    .input-container {
+        width: auto;
+    }
 }
