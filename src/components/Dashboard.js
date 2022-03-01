@@ -51,11 +51,11 @@ export default function Dashboard() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         if (querySelection.customer === "") {
-            setErrorMsg("You forgot to select a customer");
+            setErrorMsg("Please select a customer");
             return;
         }
         if (querySelection.period === "") {
-            setErrorMsg("You forgot to select a time period");
+            setErrorMsg("Please select a time period");
             return;
         }
 
@@ -121,7 +121,7 @@ export default function Dashboard() {
 
     return (
         <main aria-describedby="dashboard">
-            <section id="customer-form" aria-describedby="customer rewards data search form">
+            <div id="customer-form" aria-describedby="customer rewards data search form">
                 <Form 
                     handleChange={handleChange}
                     handleSubmit={handleSubmit}
@@ -134,9 +134,9 @@ export default function Dashboard() {
                     </p> 
                     ) : <React.Fragment />}
                 </div>
-            </section>
+            </div>
             <section id="points-display" aria-describedby="rewards points display">
-                {pointCount === null ? (
+                {pointCount === [] ? (
                     <div className="display-box img-box" style={{minHeight: "359px"}}>
                         <img className="placeholder-img" src="../../assets/piggy_bank2.png" alt="piggy bank"/>
                         <img className="placeholder-img" src="../../assets/piggy_bank2.png" alt="piggy bank"/>

@@ -14,7 +14,7 @@ header {
     justify-content: left;
     background-color: #FFFCFB;
     height: 160px;
-    border-bottom: 1px solid #707070;
+    border-bottom: 1px solid #70707080;
     padding-bottom: 15px;
 }
 
@@ -78,12 +78,6 @@ select option:hover {
     background-color: #FFFFFF !important;
 }
 
-
-#customer {
-    
-    /* background-color: #7ACED9; */
-}
-
 #root {
     height: 100%;
 }
@@ -94,7 +88,13 @@ select option:hover {
 
 #points-display {
     width:100%;
-    max-width: 750px;
+    min-height: 500px;
+    /* max-width: 750px; */
+}
+
+.time-period {
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 #period {
@@ -128,10 +128,18 @@ select option:hover {
     cursor: pointer;
 }
 
+#submit-btn img:hover {
+    box-shadow: 1px 1px 5px #707070, -1px 1px 5px #707070, 1px -1px 5px #707070, -1px -1px 5px #707070;
+}
+
+#submit-btn img:active {
+    box-shadow: inset 1px 1px 5px black, inset -1px 1px 5px black, inset 1px -1px 5px black, inset -1px -1px 5px black;
+}
+
 .display-box {
     border: 1px solid #707070;
     background-color: white;
-    padding: 40px 30px;
+    /* padding: 40px 30px; */
 }
 
 .counter-box {
@@ -157,12 +165,7 @@ h2 span {
     font-size: 34px;
     top: 1px;
     position: absolute;
-    margin-left: 12px;
-}
-
-.display-title-box {
-    margin-bottom: 35px;
-    margin-right: 35px;
+    margin-left: 6px;
 }
 
 .display-title-box h2 {
@@ -197,7 +200,15 @@ select option:hover {
     position: relative;
 }
 
+.display-box .single-cust {
+    margin: 0 !important;
+    height: 70%;
+}
 
+.display-title-box {
+    justify-content: space-evenly;
+    margin: 25px 0px;
+}
 
 .wrapper {
     display: flex;
@@ -207,15 +218,28 @@ select option:hover {
 
 .customer-small-div {
     text-align: center;
-    border: 2px solid #707070;
+    border-top: 1px solid #707070;
     padding: 5px;
     width: 100%;
+    max-width: 250px;
+}
+
+.customer-small-div:nth-of-type(1) {
+    border-top: none;
+}
+
+.customer-small-div:nth-of-type(2) {
+    border-top: none;
 }
 
 .customer-small-div .balance span {
     margin-top: 20px;
     font-size: 22px;
     position: relative;
+}
+
+canvas {
+    background-color: #022628;
 }
 
 .app-content {
@@ -225,12 +249,13 @@ select option:hover {
 
 main {
     width: 100%;
+    margin: 0px;
 }
 
 #customer-form {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     width: 100%;
 }
@@ -264,7 +289,7 @@ main {
 }
 
 #sidebar img {
-    max-width: 160px;
+    max-width: 240px;
 }
 
 .img-box {
@@ -278,7 +303,14 @@ main {
     margin: 15px;
 }
 
+@media screen and (max-width: 501px) {
+    .customer-small-div:nth-of-type(2) {
+        border-top: 1px solid #707070;
+    }
+}
+
 @media screen and (min-width: 550px) {
+    
     header h1 {
         font-size: 8vw;
     }
@@ -289,10 +321,36 @@ main {
 }
 
 
-@media screen and (min-width: 667px) {
+@media screen and (min-width: 664px) {
+
+    .customer-small-div:nth-of-type(2) {
+        border-top: 1px solid #707070;
+    }
+
+    .display-title-box {
+        margin: 35px 0px 35px 35px;
+    }
+
+    #points-display {
+        padding-top: 40px;
+        border-top: 1px solid #707070;
+    }
+
+    main {
+        margin: 0px 8%;
+    }
 
     .chart-display {
         width: 50%;
+        height: 70%;
+    }
+
+    .chart-display div {
+        height: 100%;
+        width: 90%;
+        margin-left: 5%;
+        display: flex;
+        align-items: center;
     }
 
     .wrapper {
@@ -306,6 +364,8 @@ main {
     .display-box {
         display: flex;
         justify-content: space-evenly;
+        height: 100%;
+        align-items: center;
     }
     
     header {
@@ -319,13 +379,13 @@ main {
 
 }
 
-@media screen and (min-width: 765px) {
+@media screen and (min-width: 795px) {
     main {
-        padding: 0px 40px;
+        /* padding: 0px 40px; */
         width: 100%;
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
     }
     #admin-form {
         padding: 35px 0px 45px 0px;
@@ -337,13 +397,13 @@ main {
     #sidebar {
         display: flex;
         justify-content: center;
-        padding: 35px;
-        width: 25%;
+        padding: 45px;
+        width: 30%;
         /* max-width: 300px;
         min-width: 200px; */
     }
     #sidebar img {
-        max-width: 100%;
+        width: 100%;
     }
     header img {
         display: none;
@@ -356,7 +416,7 @@ main {
     #customer-form {
         display: flex;
         flex-direction: column;
-        align-items: center;
+        /* align-items: center; */
         justify-content: center;
         width: 100%;
     }

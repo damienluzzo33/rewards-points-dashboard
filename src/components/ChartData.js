@@ -37,7 +37,15 @@ export default function ChartData({ chartData }) {
                     plugins: {
                         legend: {
                             display: true,
-                            position: 'top'
+                            position: 'top',
+                            labels: {
+                                color: "white"
+                            }
+                        },
+                        decimation: {
+                            labels: {
+                                color: "white"
+                            }
                         }
                     }
                 }} 
