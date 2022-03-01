@@ -14,6 +14,7 @@ export default function Dashboard() {
 
     //* set up point count state
     const [ pointCount, setPointCount ] = useState(null);
+    const [ monthlyArr, setMonthlyArr ] = useState([0,0,0]);
 
     //* gather customer and time period data from user inputs
     const [ querySelection, setQuerySelection ] = useState(
@@ -37,6 +38,7 @@ export default function Dashboard() {
         });
         setPointCount(null);
         setErrorMsg("");
+        setMonthlyArr([0,0,0]);
 
         const { value, name } = event.target;
 
@@ -67,6 +69,7 @@ export default function Dashboard() {
 
         //* store targeted time range in easier to use variable in initiate new point counter
         let targetMonth = querySelection.period;
+        let monthlyDataArr = [0,0,0];
         let newCount = 0;
 
         //* loop over all transactions from chosen customer and aggregate total according to specified target month (or total)
@@ -74,32 +77,24 @@ export default function Dashboard() {
             let transaction = selectedCustomer.transactions[i];
             console.log(transaction);
             //* only try to add if target month is Total of if it matches the month of the transaction date
+            let newPointsStr = parseInt(transaction.total);
+            let newPoints = convertToPoints(newPointsStr);
+
             if (targetMonth === "Total" || targetMonth === dateConverter(transaction.date)) {
-                let newPointsStr = parseInt(transaction.total);
-                let newPoints = convertToPoints(newPointsStr);
                 newCount = newCount + newPoints;
-                // console.log(newCount);
             }
+
+            monthlyDataArr[dateConverter(transaction.date) - 1] += newPoints;
+
         }
         //* update the point count state to newly aggregated count
         setPointCount(newCount);
+        setMonthlyArr(monthlyDataArr);
     }
 
 
     return (
         <main aria-describedby="dashboard">
-            <section id="points-display" aria-describedby="rewards points display">
-                {pointCount === null ? (
-                    <React.Fragment />
-                ) : (
-                    <Data 
-                        pointCount={pointCount}
-                        querySelection={querySelection}
-                        getMonth={getMonth}
-                    />
-                )}
-                
-            </section>
             <section id="customer-form" aria-describedby="customer rewards data search form">
                 <Form 
                     handleChange={handleChange}
@@ -107,8 +102,30 @@ export default function Dashboard() {
                     customerNames={customerNames}
                 />
                 <div className="error-msg">
-                    {errorMsg !== "" ? <p>{errorMsg}</p> : <React.Fragment />}
+                    {errorMsg !== "" ? (
+                    <p>
+                        {errorMsg}
+                    </p> 
+                    ) : <React.Fragment />}
                 </div>
+            </section>
+            <section id="points-display" aria-describedby="rewards points display">
+                {pointCount === null ? (
+                    <div className="display-box img-box" style={{minHeight: "359px"}}>
+                        <img className="placeholder-img" src="../../assets/piggy_bank2.png" alt="piggy bank"/>
+                        <img className="placeholder-img" src="../../assets/piggy_bank2.png" alt="piggy bank"/>
+                        <img className="placeholder-img" src="../../assets/piggy_bank2.png" alt="piggy bank"/>
+                    </div>
+                ) : (
+                    <Data 
+                        pointCount={pointCount}
+                        querySelection={querySelection}
+                        fetchData={fetchData}
+                        dataset={dataset}
+                        monthlyArr={monthlyArr}
+                    />
+                )}
+                
             </section>
         </main>
     )
