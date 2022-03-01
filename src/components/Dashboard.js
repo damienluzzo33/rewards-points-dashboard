@@ -136,12 +136,21 @@ export default function Dashboard() {
                 </div>
             </div>
             <section id="points-display" aria-describedby="rewards points display">
-                {pointCount === [] ? (
-                    <div className="display-box img-box" style={{minHeight: "359px"}}>
-                        <img className="placeholder-img" src="../../assets/piggy_bank2.png" alt="piggy bank"/>
-                        <img className="placeholder-img" src="../../assets/piggy_bank2.png" alt="piggy bank"/>
-                        <img className="placeholder-img" src="../../assets/piggy_bank2.png" alt="piggy bank"/>
+                {pointCount.length === 0 ? (
+                    <div style={{}}>
+                        <div className="display-box img-box piggy" style={{minHeight: "359px"}}>
+                            <div>
+                            <img className="placeholder-img" src="../../assets/piggy_bank2.png" alt="piggy bank"/>
+                            <img className="placeholder-img no-large" src="../../assets/piggy_bank2.png" alt="piggy bank"/>
+                            <img className="placeholder-img no-large" src="../../assets/piggy_bank2.png" alt="piggy bank"/>
+                            </div>
+                            <p>To see the rewards balances of your customers, use the drop down options above!</p>
+                        </div>
+                        
+                            
+                        
                     </div>
+                    
                 ) : (
                     <Data 
                         pointCount={pointCount}

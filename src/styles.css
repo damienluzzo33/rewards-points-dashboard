@@ -123,6 +123,10 @@ select option:hover {
     margin-right: 40px;
 }
 
+.img-box div {
+
+}
+
 #submit-btn img {
     width: 60px;
     cursor: pointer;
@@ -136,10 +140,26 @@ select option:hover {
     box-shadow: inset 1px 1px 5px black, inset -1px 1px 5px black, inset 1px -1px 5px black, inset -1px -1px 5px black;
 }
 
+.piggy {
+    flex-direction: column;
+    justify-content: center;
+}
+
 .display-box {
     border: 1px solid #707070;
     background-color: white;
-    /* padding: 40px 30px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 40px 30px;
+}
+
+.display-box p {
+    line-height: 20px;
+    margin: 15px;
+    font-size: 16px;
+    text-align: center;
 }
 
 .counter-box {
@@ -282,6 +302,10 @@ main {
     justify-content: space-between;
 }
 
+.single-cust .balance {
+    margin-bottom: 30px;
+}
+
 #sidebar {
     display: none;
     height: 100%;
@@ -303,13 +327,31 @@ main {
     margin: 15px;
 }
 
+.chart-display {
+    width:100%;
+}
+
+.single-cust {
+    min-width: 200px;
+}
+
+
 @media screen and (max-width: 501px) {
     .customer-small-div:nth-of-type(2) {
         border-top: 1px solid #707070;
     }
+
+    .no-large {
+        display: none;
+    }
 }
 
 @media screen and (min-width: 550px) {
+
+    .chart-display {
+        max-width: 300px;
+        margin-left: 20px;
+    }
     
     header h1 {
         font-size: 8vw;
@@ -317,6 +359,20 @@ main {
 
     .customer-small-div {
         width: 50%;
+    }
+
+    .display-box {
+        border: 1px solid #707070;
+        background-color: white;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 40px 30px;
+    }
+
+    .piggy {
+        flex-direction: column;
     }
 }
 
@@ -343,6 +399,7 @@ main {
     .chart-display {
         width: 50%;
         height: 70%;
+        max-width: 400px;
     }
 
     .chart-display div {
@@ -362,10 +419,9 @@ main {
     }
 
     .display-box {
-        display: flex;
-        justify-content: space-evenly;
+        /* justify-content: space-evenly; */
         height: 100%;
-        align-items: center;
+        /* align-items: center; */
     }
     
     header {
@@ -379,7 +435,7 @@ main {
 
 }
 
-@media screen and (min-width: 795px) {
+@media screen and (min-width: 810px) {
     main {
         /* padding: 0px 40px; */
         width: 100%;
