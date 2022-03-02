@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-
 import Form from "./Form";
 import Data from "./Data";
-
 import dataset from "../data/dataset.json";
 import { fetchData } from "../utils/API";
 import { convertToPoints, getMonth, dateConverter } from "../utils/converters";
@@ -75,49 +73,37 @@ export default function Dashboard() {
                     //* only try to add if target month is Total of if it matches the month of the transaction date
                     let newPointsStr = parseInt(transaction.total);
                     let newPoints = convertToPoints(newPointsStr);
-
                     if (targetMonth === "Total" || targetMonth === dateConverter(transaction.date)) {
                         newCount = newCount + newPoints;
                     }
-
                     monthlyDataArr[dateConverter(transaction.date) - 1] += newPoints;
                 }
-
                 setPointCount(pointCount => [...pointCount, newCount]);
                 setMonthlyArr(monthlyArr => [...monthlyArr, monthlyDataArr]);
-
-                //! data type will be an object {customer: total} for pointCount and an array of array of numbers [ [Numbers], [Numbers], ... ] for monthlyArr
             }
         } else {
             //* get chosen customer object from fetched json data
             let selectedCustomer = customerData[querySelection.customer];
-
             //* store targeted time range in easier to use variable in initiate new point counter
             let targetMonth = querySelection.period;
             let monthlyDataArr = [0,0,0];
             let newCount = 0;
-
             //* loop over all transactions from chosen customer and aggregate total according to specified target month (or total)
             for (let i = 0; i < selectedCustomer.transactions.length; i++) {
                 let transaction = selectedCustomer.transactions[i];
                 //* only try to add if target month is Total of if it matches the month of the transaction date
                 let newPointsStr = parseInt(transaction.total);
                 let newPoints = convertToPoints(newPointsStr);
-
                 if (targetMonth === "Total" || targetMonth === dateConverter(transaction.date)) {
                     newCount = newCount + newPoints;
                 }
-
                 monthlyDataArr[dateConverter(transaction.date) - 1] += newPoints;
             }
             //* update the point count state to newly aggregated count
             setPointCount(newCount);
             setMonthlyArr(monthlyDataArr);
-
-            //! data type will be a number for pointCount and an array of numbers for monthlyArr
         }
     }
-
 
     return (
         <main aria-describedby="dashboard">
@@ -127,7 +113,7 @@ export default function Dashboard() {
                     handleSubmit={handleSubmit}
                     customerNames={customerNames}
                 />
-                <div className="error-msg">
+                <div className="error-msg" aria-describedby="error message">
                     {errorMsg !== "" ? (
                     <p>
                         {errorMsg}
@@ -137,7 +123,7 @@ export default function Dashboard() {
             </div>
             <section id="points-display" aria-describedby="rewards points display">
                 {pointCount.length === 0 ? (
-                    <div style={{}}>
+                    <div aria-describedby="piggy banks">
                         <div className="display-box img-box piggy" style={{minHeight: "359px"}}>
                             <div>
                             <img className="placeholder-img" src="../../assets/piggy_bank2.png" alt="piggy bank"/>
@@ -146,11 +132,7 @@ export default function Dashboard() {
                             </div>
                             <p>To see the rewards balances of your customers, use the drop down options above!</p>
                         </div>
-                        
-                            
-                        
                     </div>
-                    
                 ) : (
                     <Data 
                         pointCount={pointCount}
@@ -160,7 +142,6 @@ export default function Dashboard() {
                         customerNames={customerNames}
                     />
                 )}
-                
             </section>
         </main>
     )

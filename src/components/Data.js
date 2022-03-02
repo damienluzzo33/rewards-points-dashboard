@@ -1,7 +1,6 @@
-import React, {useState} from "react";
+import React from "react";
 import ChartData from "./ChartData";
-
-import { convertToPoints, getMonth, dateConverter } from "../utils/converters";
+import { getMonth } from "../utils/converters";
 
 const chartColors = [
     'rgb(0, 207, 251)',
@@ -9,7 +8,6 @@ const chartColors = [
     '#1293C5',
     '#3342C4'
 ];
-
 
 export default function Data(props) {
 
@@ -19,7 +17,6 @@ export default function Data(props) {
     const labels = ["January", "February", "March"];
 
     let chartData;
-
     if (typeof pointCount === "number") {
         chartData = {
             labels: labels,
@@ -62,7 +59,6 @@ export default function Data(props) {
                         <h2 className="balance">Balance: <span>{pointCount}</span></h2>
                     </div>
                 )}
-                
                 {pointCount.length > 0 && 
                 <div className="display-title-box wrapper">  
                     {customerNames.map((customer, index) => {
@@ -78,7 +74,6 @@ export default function Data(props) {
                     })}
                     </div>
                 }
-            
                 <div className="chart-display">
                     <ChartData 
                         chartData={chartData}
@@ -87,6 +82,5 @@ export default function Data(props) {
                 
             </div>
         </React.Fragment>
-        
     )
 }

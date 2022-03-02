@@ -21,7 +21,6 @@ ChartJS.register(
     Legend
 );
 
-
 export default function ChartData({ chartData }) {
 
     return (

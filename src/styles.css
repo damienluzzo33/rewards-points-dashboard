@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@100;200;300;400;500;600;700&family=League+Spartan:wght@100;200;300;400;500;600;700;800&display=swap');
 
-
 body {
     background-color: #EFFCFD;
     font-family: 'IBM Plex Sans Condensed', sans-serif;
@@ -87,9 +86,8 @@ select option:hover {
 }
 
 #points-display {
-    width:100%;
+    width: 100%;
     min-height: 500px;
-    /* max-width: 750px; */
 }
 
 .time-period {
@@ -121,10 +119,6 @@ select option:hover {
 
 .input-container .entry-box:nth-of-type(1) {
     margin-right: 40px;
-}
-
-.img-box div {
-
 }
 
 #submit-btn img {
@@ -340,27 +334,22 @@ main {
     .customer-small-div:nth-of-type(2) {
         border-top: 1px solid #707070;
     }
-
     .no-large {
         display: none;
     }
 }
 
 @media screen and (min-width: 550px) {
-
     .chart-display {
         max-width: 300px;
         margin-left: 20px;
     }
-    
     header h1 {
         font-size: 8vw;
     }
-
     .customer-small-div {
         width: 50%;
     }
-
     .display-box {
         border: 1px solid #707070;
         background-color: white;
@@ -370,38 +359,30 @@ main {
         align-items: center;
         padding: 40px 30px;
     }
-
     .piggy {
         flex-direction: column;
     }
 }
 
-
 @media screen and (min-width: 664px) {
-
     .customer-small-div:nth-of-type(2) {
         border-top: 1px solid #707070;
     }
-
     .display-title-box {
         margin: 35px 0px 35px 35px;
     }
-
     #points-display {
         padding-top: 40px;
         border-top: 1px solid #707070;
     }
-
     main {
         margin: 0px 8%;
     }
-
     .chart-display {
         width: 50%;
         height: 70%;
         max-width: 400px;
     }
-
     .chart-display div {
         height: 100%;
         width: 90%;
@@ -409,21 +390,15 @@ main {
         display: flex;
         align-items: center;
     }
-
     .wrapper {
         width: 35%;
-    }
-    
+    } 
     .customer-small-div {
         width: 100%;
     }
-
     .display-box {
-        /* justify-content: space-evenly; */
         height: 100%;
-        /* align-items: center; */
     }
-    
     header {
         justify-content: left;
         padding-bottom: 25px;
@@ -432,12 +407,10 @@ main {
         max-width: 75%;
         float: right;
     }
-
 }
 
 @media screen and (min-width: 810px) {
     main {
-        /* padding: 0px 40px; */
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -448,15 +421,12 @@ main {
         display: flex;
         justify-content: left;
         width: 100%;
-
     }
     #sidebar {
         display: flex;
         justify-content: center;
         padding: 45px;
         width: 30%;
-        /* max-width: 300px;
-        min-width: 200px; */
     }
     #sidebar img {
         width: 100%;
@@ -472,7 +442,6 @@ main {
     #customer-form {
         display: flex;
         flex-direction: column;
-        /* align-items: center; */
         justify-content: center;
         width: 100%;
     }

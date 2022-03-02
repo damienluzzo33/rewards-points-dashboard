@@ -1,4 +1,4 @@
-
+//* set up helper functions
 export function convertToPoints(total) {
     let rewardsPoints = 0;
     if (total > 100) {
